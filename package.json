@@ -1,0 +1,40 @@
+{
+  "name": "lifeguard-bot-client",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "prettier": "prettier --write \"src/**/*.{ts,jsx}\""
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.14",
+    "@mui/material": "^5.14.9",
+    "antd": "^5.17.2",
+    "axios": "^0.21.1",
+    "babel-plugin-inline-react-svg": "^2.0.1",
+    "leaflet": "^1.9.4",
+    "leaflet-defaulticon-compatibility": "^0.1.2",
+    "next": "12.1.6",
+    "prettier": "^2.7.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.4.0",
+    "react-leaflet": "^4.2.1",
+    "react-leaflet-cluster": "^2.1.0",
+    "styled-components": "^5.3.5",
+    "typescript": "4.7.4"
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.9.8",
+    "@types/node": "18.0.0",
+    "@types/react": "^18.2.70",
+    "@types/styled-components": "^5.1.34",
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-next": "12.1.6"
+  }
+}
