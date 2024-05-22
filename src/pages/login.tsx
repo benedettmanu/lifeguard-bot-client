@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import { Button, Form, Input } from 'antd';
 
 import { BackgroundComponent } from '@/styles/pages/Home';
-import { StyledModal } from '@/styles/pages/Registration';
+import { StyledModal, StyledPassword } from '@/styles/pages/Registration';
 import api from '@/services/api';
 import { UserLogin } from '@/Models/User';
 
@@ -55,7 +55,7 @@ const Login: React.FC = () => {
                             name="senha"
                             rules={[{ required: true, message: 'Por favor, insira sua senha!' }]}
                         >
-                            <Input placeholder="Senha" />
+                            <StyledPassword placeholder="Senha" />
                         </Form.Item>
                         {error && <p style={{ color: 'red' }}>{error}</p>}
                         <Form.Item>

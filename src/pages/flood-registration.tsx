@@ -52,11 +52,14 @@ const FloodRegistration: React.FC = () => {
                 </Form.Item>
               </Col>
               <Col span={12}>
-                <Form.Item name="cep" rules={[{ required: true, message: 'Por favor, insira o CEP!' }]}>
+                <Form.Item name="cep">
                   <Input placeholder="CEP" />
                 </Form.Item>
               </Col>
             </Row>
+            <Form.Item name="descricao">
+              <Input placeholder="Descrição" />
+            </Form.Item>
             <Form.Item name="cidade" style={{ marginBottom: '2rem' }} rules={[{ required: true, message: 'Por favor, selecione a cidade!' }]}>
               <Select placeholder="Selecione a cidade">
                 <Option value="itajai">Itajaí</Option>
@@ -65,9 +68,6 @@ const FloodRegistration: React.FC = () => {
                 <Option value="navegantes">Navegantes</Option>
                 <Option value="itapema">Itapema</Option>
               </Select>
-            </Form.Item>
-            <Form.Item name="descricao" rules={[{ required: true, message: 'Por favor, insira a descrição!' }]}>
-              <Input placeholder="Descrição" />
             </Form.Item>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <Form.Item>

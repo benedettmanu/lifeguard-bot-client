@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import { Button, Form, Input, Checkbox, Row, Col, Select } from 'antd';
 
 import { BackgroundComponent } from '@/styles/pages/Home';
-import { StyledModal } from '@/styles/pages/Registration';
+import { StyledModal, StyledPassword } from '@/styles/pages/Registration';
 import api from '@/services/api';
 import { CreateUserResgistration } from '@/Models/User';
 
@@ -61,7 +61,7 @@ const UserRegistration: React.FC = () => {
               <Input placeholder="Seu Melhor E-mail" />
             </Form.Item>
             <Form.Item name="senha" rules={[{ required: true, message: 'Por favor, insira sua senha!' }]}>
-              <Input placeholder="Senha" />
+              <StyledPassword placeholder="Senha" />
             </Form.Item>
             <Form.Item name="logradouro" rules={[{ required: true, message: 'Por favor, insira seu logradouro!' }]}>
               <Input placeholder="Rua" />

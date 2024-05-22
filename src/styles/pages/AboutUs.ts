@@ -7,6 +7,7 @@ export const AboutUsContent = styled.div`
   grid-template-columns: 40% 60%;
   align-items: center;
   margin-bottom: 3rem;
+  height: 80vh;
 
   img {
     justify-self: end;

@@ -60,11 +60,13 @@ const Header: React.FC<Props> = ({ colorTheme, route, user }) => {
               <li>FAÇA PARTE</li>
             </Link>
           </div>
+          {user &&
           <div>
-            <Link href="/flood-registration">
-              <li>CADASTRAR ÁREA ALAGADA</li>
-            </Link>
-          </div>
+          <Link href="/flood-registration">
+            <li>CADASTRAR ÁREA ALAGADA</li>
+          </Link>
+        </div>
+          }
           {user && (user.adm || user.autoridade) && (
             <div>
               <Link href="/list-flood-registrations">

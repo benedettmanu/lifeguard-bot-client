@@ -1,5 +1,15 @@
+import { Input } from "antd";
 import styled from "styled-components";
 import theme from "../theme";
+
+export const StyledPassword = styled(Input.Password)`
+  height: 40px;
+  border-radius: 20px;
+
+  &::placeholder {
+    color: ${theme.colors.lightGrey};
+  }
+`;
 
 export const StyledModal = styled.div`
   position: absolute;
