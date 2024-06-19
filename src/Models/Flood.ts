@@ -5,6 +5,8 @@ export interface ListFloodResgistrations {
   id: number;
   logradouro: string;
   cep: string;
+  data: Date;
+  area_confirmada: boolean;
 }
 
 export interface CreateFloodResgistration {
@@ -13,4 +15,9 @@ export interface CreateFloodResgistration {
   descricao: string;
   logradouro: string;
   cep: string;
+}
+
+export interface Area {
+  bairro: string;
+  cidade: string;
 }

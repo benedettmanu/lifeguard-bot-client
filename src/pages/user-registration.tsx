@@ -25,7 +25,6 @@ const UserRegistration: React.FC = () => {
         if (response.status !== 201) {
           setError('Não foi possível criar o usuário. Tente novamente.');
         } else {
-          console.log(response.data);
           router.push('/login');
         }
       } else {

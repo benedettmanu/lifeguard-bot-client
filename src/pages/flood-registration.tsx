@@ -21,7 +21,6 @@ const FloodRegistration: React.FC = () => {
       if (response.status !== 201) {
         setError('Não foi possível cadastrar área alagada. Tente novamente.');
       } else {
-        console.log(response.data);
         router.push('/');
       }
 

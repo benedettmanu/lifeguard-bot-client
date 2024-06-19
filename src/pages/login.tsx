@@ -18,7 +18,6 @@ const Login: React.FC = () => {
         try {
             const response = await api.post('login', values);
             if (response.status === 200) {
-                console.log(response.data);
                 localStorage.setItem('user', JSON.stringify(response.data));
                 if (typeof window !== 'undefined') {
                     window.location.href = '/';

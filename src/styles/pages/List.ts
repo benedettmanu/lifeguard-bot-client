@@ -43,3 +43,20 @@ export const Title = styled.h1`
 export const Subtitle = styled.h2`
   font-weight: 300;
 `;
+
+export const ConfirmButton = styled.button`
+  background-color: ${theme.colors.lightGrey};
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-left: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: ${theme.colors.background};
+  font-weight: 400;
+
+  &:hover {
+    background-color: ${theme.colors.background};
+    color: ${theme.colors.light};
+  }
+`;
