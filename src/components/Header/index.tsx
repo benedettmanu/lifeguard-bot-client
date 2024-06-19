@@ -1,5 +1,3 @@
-
-import { useRouter } from "next/router";
 import Link from "next/link";
 
 import React, { useState } from "react";
@@ -17,13 +15,12 @@ interface Props {
 }
 
 const Header: React.FC<Props> = ({ colorTheme, route, user }) => {
-  const router = useRouter();
   const [menuIsOpen, setMenuIsOpen] = useState(false);
 
   const handleLogout = () => {
-    localStorage.removeItem('user');
-    if (typeof window !== 'undefined') {
-      window.location.href = '/login';
+    localStorage.removeItem("user");
+    if (typeof window !== "undefined") {
+      window.location.href = "/login";
     }
   };
 
@@ -60,16 +57,23 @@ const Header: React.FC<Props> = ({ colorTheme, route, user }) => {
               <li>FAÇA PARTE</li>
             </Link>
           </div>
-          {user &&
-          <div>
-          <Link href="/flood-registration">
-            <li>CADASTRAR ÁREA ALAGADA</li>
-          </Link>
-        </div>
-          }
+          {user && (
+            <div>
+              <Link href="/flood-registration">
+                <li>CADASTRAR ÁREA ALAGADA</li>
+              </Link>
+            </div>
+          )}
           {user && (user.adm || user.autoridade) && (
             <div>
               <Link href="/list-flood-registrations">
+                <li>VISUALIZAR ÁREAS ALAGADAS</li>
+              </Link>
+            </div>
+          )}
+          {(!user || (!user.adm && !user.autoridade)) && (
+            <div>
+              <Link href="/list-confirmed-flood-registrations">
                 <li>VISUALIZAR ÁREAS ALAGADAS</li>
               </Link>
             </div>
@@ -81,11 +85,11 @@ const Header: React.FC<Props> = ({ colorTheme, route, user }) => {
               </Link>
             </div>
           )}
-          {user &&
+          {user && (
             <div>
               <li onClick={handleLogout}>SAIR</li>
             </div>
-          }
+          )}
         </Menu>
       </Drawer>
     </HeaderComponent>

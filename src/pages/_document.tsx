@@ -54,7 +54,10 @@ export default class MyDocument extends Document {
           <meta name="description" content={description} />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/about-us/pedro.png" />
-          <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap" rel="stylesheet" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <body>
           <Main />

@@ -17,7 +17,18 @@ export interface CreateFloodResgistration {
   cep: string;
 }
 
+export interface Street {
+  descricao: string;
+  logradouro: string;
+}
+
 export interface Area {
   bairro: string;
   cidade: string;
+}
+
+export interface ConfirmedArea {
+  bairro: string;
+  cidade: string;
+  ruas: Street[];
 }

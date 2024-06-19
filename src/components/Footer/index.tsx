@@ -7,7 +7,11 @@ import StyledFooter from "./styles";
 
 const Footer: React.FC = () => {
   const router = useRouter();
-  const isHomePage = router.pathname === "/" || router.pathname === "/user-registration" || router.pathname === "/login" || router.pathname === "/flood-registration";
+  const isHomePage =
+    router.pathname === "/" ||
+    router.pathname === "/user-registration" ||
+    router.pathname === "/login" ||
+    router.pathname === "/flood-registration";
 
   const [visible, setVisible] = useState(false);
 
@@ -45,18 +49,10 @@ const Footer: React.FC = () => {
         </div>
         <div id="socialMedia">
           <a href={`/policy-privacy`}>Política de Privacidade</a>
-          <a
-            rel="noreferrer"
-            href="https://www.instagram.com/"
-            target="_blank"
-          >
+          <a rel="noreferrer" href="https://www.instagram.com/" target="_blank">
             <FaInstagram />{" "}
           </a>
-          <a
-            rel="noreferrer"
-            href="https://www.facebook.com/"
-            target="_blank"
-          >
+          <a rel="noreferrer" href="https://www.facebook.com/" target="_blank">
             <FaFacebookSquare />{" "}
           </a>
           <button

@@ -1,15 +1,15 @@
-import Head from 'next/head';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import Head from "next/head";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import { Button, Form, Input, Checkbox, Row, Col, Select } from 'antd';
+import { Button, Form, Input, Checkbox, Row, Col, Select } from "antd";
 
-import { BackgroundComponent } from '@/styles/pages/Home';
-import { StyledModal, StyledPassword } from '@/styles/pages/Registration';
-import api from '@/services/api';
-import { CreateUserResgistration } from '@/Models/User';
+import { BackgroundComponent } from "@/styles/pages/Home";
+import { StyledModal, StyledPassword } from "@/styles/pages/Registration";
+import api from "@/services/api";
+import { CreateUserResgistration } from "@/Models/User";
 
 const UserRegistration: React.FC = () => {
   const { Option } = Select;
@@ -21,20 +21,20 @@ const UserRegistration: React.FC = () => {
     try {
       if (values.privacyPolicy) {
         const { privacyPolicy, ...userValues } = values;
-        const response = await api.post('criaLogin', userValues);
+        const response = await api.post("criaLogin", userValues);
         if (response.status !== 201) {
-          setError('Não foi possível criar o usuário. Tente novamente.');
+          setError("Não foi possível criar o usuário. Tente novamente.");
         } else {
-          router.push('/login');
+          router.push("/login");
         }
       } else {
-        setError('Política de privacidade não aceita');
+        setError("Política de privacidade não aceita");
       }
     } catch (error: any) {
       if (error.response && error.response.status === 400) {
-        setError('Já existe um usuário com este e-mail.');
+        setError("Já existe um usuário com este e-mail.");
       } else {
-        setError('Ocorreu um erro ao tentar criar o usuário. Tente novamente.');
+        setError("Ocorreu um erro ao tentar criar o usuário. Tente novamente.");
       }
       console.error(error);
     }
@@ -50,24 +50,63 @@ const UserRegistration: React.FC = () => {
         <StyledModal>
           <h1>FAÇA PARTE</h1>
           <Form form={form} onFinish={handleSubmit}>
-            <Form.Item name="nome" rules={[{ required: true, message: 'Por favor, insira seu nome!' }]}>
+            <Form.Item
+              name="nome"
+              rules={[
+                { required: true, message: "Por favor, insira seu nome!" },
+              ]}
+            >
               <Input placeholder="Nome" />
-            </Form.Item >
-            <Form.Item name="telefone" rules={[{ required: true, message: 'Por favor, insira seu número de telefone!' }]}>
+            </Form.Item>
+            <Form.Item
+              name="telefone"
+              rules={[
+                {
+                  required: true,
+                  message: "Por favor, insira seu número de telefone!",
+                },
+              ]}
+            >
               <Input placeholder="Número de Telefone" />
             </Form.Item>
-            <Form.Item name="email" rules={[{ required: true, message: 'Por favor, insira seu e-mail!' }]}>
+            <Form.Item
+              name="email"
+              rules={[
+                { required: true, message: "Por favor, insira seu e-mail!" },
+              ]}
+            >
               <Input placeholder="Seu Melhor E-mail" />
             </Form.Item>
-            <Form.Item name="senha" rules={[{ required: true, message: 'Por favor, insira sua senha!' }]}>
+            <Form.Item
+              name="senha"
+              rules={[
+                { required: true, message: "Por favor, insira sua senha!" },
+              ]}
+            >
               <StyledPassword placeholder="Senha" />
             </Form.Item>
-            <Form.Item name="logradouro" rules={[{ required: true, message: 'Por favor, insira seu logradouro!' }]}>
+            <Form.Item
+              name="logradouro"
+              rules={[
+                {
+                  required: true,
+                  message: "Por favor, insira seu logradouro!",
+                },
+              ]}
+            >
               <Input placeholder="Rua" />
             </Form.Item>
             <Row gutter={20}>
               <Col span={12}>
-                <Form.Item name="bairro" rules={[{ required: true, message: 'Por favor, insira seu bairro!' }]}>
+                <Form.Item
+                  name="bairro"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Por favor, insira seu bairro!",
+                    },
+                  ]}
+                >
                   <Input placeholder="Bairro" />
                 </Form.Item>
               </Col>
@@ -77,7 +116,12 @@ const UserRegistration: React.FC = () => {
                 </Form.Item>
               </Col>
             </Row>
-            <Form.Item name="cidade" rules={[{ required: true, message: 'Por favor, selecione sua cidade!' }]}>
+            <Form.Item
+              name="cidade"
+              rules={[
+                { required: true, message: "Por favor, selecione sua cidade!" },
+              ]}
+            >
               <Select placeholder="Selecione a cidade">
                 <Option value="itajai">Itajaí</Option>
                 <Option value="balneario">Balneário Camboriú</Option>
@@ -86,22 +130,32 @@ const UserRegistration: React.FC = () => {
                 <Option value="itapema">Itapema</Option>
               </Select>
             </Form.Item>
-            <Form.Item name="privacyPolicy" valuePropName="checked" rules={[{ required: true, message: 'Por favor, aceite a política de privacidade!' }]}>
+            <Form.Item
+              name="privacyPolicy"
+              valuePropName="checked"
+              rules={[
+                {
+                  required: true,
+                  message: "Por favor, aceite a política de privacidade!",
+                },
+              ]}
+            >
               <Checkbox>Aceito a política de privacidade</Checkbox>
             </Form.Item>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {error && <p style={{ color: "red" }}>{error}</p>}
             <Form.Item>
               <Button type="primary" htmlType="submit">
                 Cadastrar
               </Button>
             </Form.Item>
           </Form>
-          <p>Já tem login? <Link href="/login">Entrar</Link></p>
+          <p>
+            Já tem login? <Link href="/login">Entrar</Link>
+          </p>
         </StyledModal>
       </BackgroundComponent>
     </>
   );
 };
-
 
 export default UserRegistration;

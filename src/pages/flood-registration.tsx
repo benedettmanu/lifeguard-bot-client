@@ -17,15 +17,16 @@ const FloodRegistration: React.FC = () => {
 
   const handleSubmit = async (values: CreateFloodResgistration) => {
     try {
-      const response = await api.post('cadastraArea', values);
+      const response = await api.post("cadastraArea", values);
       if (response.status !== 201) {
-        setError('Não foi possível cadastrar área alagada. Tente novamente.');
+        setError("Não foi possível cadastrar área alagada. Tente novamente.");
       } else {
-        router.push('/');
+        router.push("/");
       }
-
     } catch (error: any) {
-      setError('Ocorreu um erro ao tentar cadastrar área alagada. Tente novamente.');
+      setError(
+        "Ocorreu um erro ao tentar cadastrar área alagada. Tente novamente."
+      );
       console.error(error);
     }
   };
@@ -41,12 +42,20 @@ const FloodRegistration: React.FC = () => {
         <StyledModal>
           <h1>Cadastrar Área Alagada</h1>
           <Form form={form} onFinish={handleSubmit}>
-            <Form.Item name="logradouro" rules={[{ required: true, message: 'Por favor, insira a rua!' }]}>
+            <Form.Item
+              name="logradouro"
+              rules={[{ required: true, message: "Por favor, insira a rua!" }]}
+            >
               <Input placeholder="Rua" />
             </Form.Item>
             <Row gutter={20}>
               <Col span={12}>
-                <Form.Item name="bairro" rules={[{ required: true, message: 'Por favor, insira o bairro!' }]}>
+                <Form.Item
+                  name="bairro"
+                  rules={[
+                    { required: true, message: "Por favor, insira o bairro!" },
+                  ]}
+                >
                   <Input placeholder="Bairro" />
                 </Form.Item>
               </Col>
@@ -59,7 +68,13 @@ const FloodRegistration: React.FC = () => {
             <Form.Item name="descricao">
               <Input placeholder="Descrição" />
             </Form.Item>
-            <Form.Item name="cidade" style={{ marginBottom: '2rem' }} rules={[{ required: true, message: 'Por favor, selecione a cidade!' }]}>
+            <Form.Item
+              name="cidade"
+              style={{ marginBottom: "2rem" }}
+              rules={[
+                { required: true, message: "Por favor, selecione a cidade!" },
+              ]}
+            >
               <Select placeholder="Selecione a cidade">
                 <Option value="itajai">Itajaí</Option>
                 <Option value="balneario">Balneário Camboriú</Option>
@@ -68,7 +83,7 @@ const FloodRegistration: React.FC = () => {
                 <Option value="itapema">Itapema</Option>
               </Select>
             </Form.Item>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {error && <p style={{ color: "red" }}>{error}</p>}
             <Form.Item>
               <Button type="primary" htmlType="submit">
                 Confirmar

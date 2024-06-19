@@ -1,16 +1,22 @@
+import Head from "next/head";
+import { GetStaticProps } from "next";
 
-import Head from 'next/head';
-import { GetStaticProps } from 'next';
+import React from "react";
 
-import React from 'react';
+import { FaRegCheckCircle, FaRegTimesCircle } from "react-icons/fa";
 
-import { FaRegCheckCircle, FaRegTimesCircle } from 'react-icons/fa';
-
-import { Content, Subtitle, Table, Td, Th, Title, Tr } from "@/styles/pages/List";
+import {
+  Content,
+  Subtitle,
+  Table,
+  Td,
+  Th,
+  Title,
+  Tr,
+} from "@/styles/pages/List";
 import { Container } from "@/components/Container";
-import { ListUserResgistrations } from '@/Models/User';
-import api from '@/services/api';
-
+import { ListUserResgistrations } from "@/Models/User";
+import api from "@/services/api";
 
 interface Props {
   user: ListUserResgistrations[];
@@ -37,7 +43,7 @@ const ListUserRegistration: React.FC<Props> = ({ user }) => {
               <Th>Bairro</Th>
               <Th>CEP</Th>
               <Th>Cidade</Th>
-              <Th style={{ width: '50px' }}>Autoridade</Th>
+              <Th style={{ width: "50px" }}>Autoridade</Th>
             </Tr>
           </thead>
           <tbody>
@@ -50,8 +56,12 @@ const ListUserRegistration: React.FC<Props> = ({ user }) => {
                 <Td>{usuario.bairro}</Td>
                 <Td>{usuario.cep}</Td>
                 <Td>{usuario.cidade}</Td>
-                <Td style={{ textAlign: 'center' }}>
-                  {usuario.autoridade ? <FaRegCheckCircle /> : <FaRegTimesCircle />}
+                <Td style={{ textAlign: "center" }}>
+                  {usuario.autoridade ? (
+                    <FaRegCheckCircle />
+                  ) : (
+                    <FaRegTimesCircle />
+                  )}
                 </Td>
               </Tr>
             ))}

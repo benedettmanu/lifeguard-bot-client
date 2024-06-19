@@ -22,7 +22,7 @@ const Map: React.FC<MapProps> = ({ locations }) => {
   return (
     <div>
       <MapContainer
-        style={{...mapStyles, width: '100vw', maxWidth: '1190px'}}
+        style={{ ...mapStyles, width: "100vw", maxWidth: "1190px" }}
         center={[-17.542843, -49.543787]}
         zoom={4}
       >

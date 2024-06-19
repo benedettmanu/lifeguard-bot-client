@@ -3,9 +3,18 @@ import { GetStaticProps } from "next";
 
 import React from "react";
 
-import { FaRegCheckCircle, FaRegTimesCircle } from "react-icons/fa";
+import { FaRegCheckCircle } from "react-icons/fa";
 
-import { ConfirmButton, Content, Subtitle, Table, Td, Th, Title, Tr } from "@/styles/pages/List";
+import {
+  ConfirmButton,
+  Content,
+  Subtitle,
+  Table,
+  Td,
+  Th,
+  Title,
+  Tr,
+} from "@/styles/pages/List";
 import { Container } from "@/components/Container";
 import { Area, ListFloodResgistrations } from "@/Models/Flood";
 import api from "@/services/api";
@@ -16,37 +25,38 @@ interface Props {
 
 function formatDate(dateString: string) {
   const date = new Date(dateString);
-  const day = date.getDate().toString().padStart(2, '0');
-  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, "0");
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
   const year = date.getFullYear();
-  const hours = date.getHours().toString().padStart(2, '0');
-  const minutes = date.getMinutes().toString().padStart(2, '0');
-  
+  const hours = date.getHours().toString().padStart(2, "0");
+  const minutes = date.getMinutes().toString().padStart(2, "0");
+
   return `${day}/${month}/${year} ${hours}:${minutes}`;
 }
 
 const ListFloodRegistration: React.FC<Props> = ({ flood }) => {
   async function confirmArea(area: Area) {
-    const confirm = window.confirm(`Você realmente quer confirmar a área de ${area.cidade}, ${area.bairro} como alagada?`);
+    const confirm = window.confirm(
+      `Você realmente quer confirmar a área de ${area.cidade}, ${area.bairro} como alagada?`
+    );
     if (confirm) {
       try {
         const response = await api.put("confirmarAreaAlagada", area);
         if (response.status === 200) {
-          alert('Áreas confirmadas com sucesso!');
+          alert("Áreas confirmadas com sucesso!");
           window.location.reload();
         }
       } catch (error) {
-        alert('Houve um erro ao confirmar as áreas.');
+        alert("Houve um erro ao confirmar as áreas.");
       }
     }
   }
-  
+
   return (
     <Container>
       <Head>
-        <title>Listagem de Áreas Alagada | Bot Salva-Vidas</title>
+        <title>Listagem de Áreas Alagadas | Bot Salva-Vidas</title>
       </Head>
-
 
       <Content>
         <Title>Áreas Alagadas</Title>
@@ -73,16 +83,23 @@ const ListFloodRegistration: React.FC<Props> = ({ flood }) => {
                 <Td>{area.cep}</Td>
                 <Td>{area.cidade}</Td>
                 <Td>{formatDate(area.data.toLocaleString())}</Td>
-                <Td style={{ textAlign: 'center' }}>
-                {area.area_confirmada ? (
-    <FaRegCheckCircle />
-  ) : (
-    <>
-      <ConfirmButton onClick={() => confirmArea({ cidade: area.cidade, bairro: area.bairro })}>
-  Confirmar
-</ConfirmButton>
-    </>
-  )}
+                <Td style={{ textAlign: "center" }}>
+                  {area.area_confirmada ? (
+                    <FaRegCheckCircle />
+                  ) : (
+                    <>
+                      <ConfirmButton
+                        onClick={() =>
+                          confirmArea({
+                            cidade: area.cidade,
+                            bairro: area.bairro,
+                          })
+                        }
+                      >
+                        Confirmar
+                      </ConfirmButton>
+                    </>
+                  )}
                 </Td>
               </Tr>
             ))}

@@ -16,14 +16,19 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   const [user, setUser] = useState<ListUserResgistrations | null>(null);
 
   useEffect(() => {
-    const userItem = localStorage.getItem('user');
+    const userItem = localStorage.getItem("user");
     if (userItem) {
       setUser(JSON.parse(userItem) as ListUserResgistrations);
     }
   }, []);
 
   useEffect(() => {
-    if (router.asPath === "/" || router.asPath === "/user-registration" || router.asPath === "/login" || router.asPath === "/flood-registration") {
+    if (
+      router.asPath === "/" ||
+      router.asPath === "/user-registration" ||
+      router.asPath === "/login" ||
+      router.asPath === "/flood-registration"
+    ) {
       setHeaderTheme("light");
     } else {
       setHeaderTheme("blue");
@@ -31,9 +36,12 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   }, [router.asPath]);
 
   return (
-
     <ThemeProvider theme={theme}>
-      <Header colorTheme={headerTheme} route={router.asPath} user={user || null} />
+      <Header
+        colorTheme={headerTheme}
+        route={router.asPath}
+        user={user || null}
+      />
       <Component {...pageProps} />
       <GlobalStyle />
       <Footer />
