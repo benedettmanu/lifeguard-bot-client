@@ -22,10 +22,11 @@ const UserRegistration: React.FC = () => {
       if (values.privacyPolicy) {
         const { privacyPolicy, ...userValues } = values;
         const response = await api.post("criaLogin", userValues);
+        const { bot_link } = response.data;
         if (response.status !== 201) {
           setError("Não foi possível criar o usuário. Tente novamente.");
         } else {
-          router.push("/login");
+          window.location.href = bot_link; 
         }
       } else {
         setError("Política de privacidade não aceita");
